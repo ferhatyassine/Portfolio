@@ -1,0 +1,240 @@
+/* ═══════════════════════════════════════════════════════════════
+   STYLE.CSS — Portfolio Ferhat Mohamed Yassine
+   ---------------------------------------------------------------
+   SOMMAIRE :
+     1. Variables de couleurs  (change ici pour re-thémer le site)
+     2. Styles de base
+     3. Barre de navigation (header)
+     4. Sélecteur de langue FR/EN
+     5. Section hero (accueil avec image de fond)
+     6. Cartes (intérêts + compétences)
+     7. Projets
+     8. À propos
+     9. Contact
+     10. Pied de page
+     11. Bouton retour en haut
+     12. Animations (keyframes)
+     13. Responsive (tablette ≥768px, bureau ≥1200px)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. VARIABLES DE COULEURS ──
+   Pour changer le thème du site, modifie SEULEMENT ces valeurs. */
+* { padding: 0; margin: 0; box-sizing: border-box; }
+:root {
+  --primary: #0ea5e9;        /* bleu principal (boutons, accents)   */
+  --primary-dark: #0284c7;   /* bleu foncé (survol, dégradés)       */
+  --accent: #f59e0b;         /* orange (petites touches)            */
+  --accent-soft: #fef3c7;    /* orange pâle                          */
+  --bg: #f8fafc;             /* fond général de la page              */
+  --bg-soft: #eff6ff;        /* fond bleu très pâle (sections)       */
+  --card: #ffffff;           /* fond des cartes                      */
+  --text: #1e293b;           /* couleur du texte principal           */
+  --muted: #64748b;          /* texte secondaire (gris)              */
+  --primary-glow: rgba(14,165,233,0.25); /* ombre bleue des boutons */
+}
+
+/* ── 2. STYLES DE BASE ── */
+html { font-size: 10px; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+a { text-decoration: none; }
+body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+img { height: 100%; width: 100%; object-fit: cover; }
+/* .container : centre le contenu de chaque section, hauteur plein écran */
+.container { min-height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; }
+p { font-size: 1.4rem; margin-top: 5px; line-height: 2.5rem; font-weight: 400; letter-spacing: 0.03rem; color: var(--muted); }
+/* Titres de sections (ex : "Mes Compétences") */
+.section-title { font-family: 'Poppins', sans-serif; font-size: 3.6rem; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: 0.05rem; text-align: center; }
+.section-title span { background: linear-gradient(120deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.section-sub { text-align: center; font-size: 1.4rem; max-width: 560px; margin: 0 auto; }
+/* Boutons principaux (.cta) et secondaires (.cta.ghost) */
+.cta {
+  display: inline-block; padding: 13px 36px; color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none; font-size: 1.5rem; letter-spacing: 0.08rem; margin-top: 30px;
+  transition: 0.3s ease; font-weight: 600; border-radius: 50px; box-shadow: 0 6px 20px var(--primary-glow);
+}
+.cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 30px var(--primary-glow); }
+.cta.ghost { background: #fff; color: var(--primary); border: 2px solid var(--primary); box-shadow: none; }
+.cta.ghost:hover { background: var(--bg-soft); }
+.brand h1 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: var(--text); letter-spacing: 0.05rem; font-weight: 700; }
+.brand h1 span { color: var(--primary); }
+/* .reveal : éléments qui apparaissent en glissant au scroll (voir js/app.js) */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.1s; } .reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; } .reveal.d4 { transition-delay: 0.4s; }
+
+/* ── 3. BARRE DE NAVIGATION ── */
+#header { position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; }
+/* Sur le hero (image de fond), la barre est transparente ; elle devient
+   blanche au scroll (géré dans js/app.js) */
+#header .header { min-height: 8vh; background-color: transparent; transition: 0.3s ease; }
+#header .nav-bar { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+#header .nav-right { display: flex; align-items: center; gap: 10px; }
+/* Menu mobile plein écran (glisse depuis la droite) */
+#header .nav-list ul { list-style: none; position: absolute; background-color: #ffffff; width: 100vw; height: 100vh; left: 100%; top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1; overflow-x: hidden; transition: 0.5s ease left; }
+#header .nav-list ul.active { left: 0%; }
+#header .nav-list ul a { font-size: 2.2rem; font-weight: 600; letter-spacing: 0.1rem; color: var(--text); padding: 16px; display: block; transition: color 0.2s; }
+#header .nav-list ul li:hover a { color: var(--primary); }
+/* Sur le hero, liens blancs pour rester lisibles sur la photo */
+#header.on-hero .nav-list ul a { color: #fff; }
+#header.on-hero .brand h1 { color: #fff; }
+#header.scrolled .nav-list ul a { color: var(--text); }
+#header.scrolled .brand h1 { color: var(--text); }
+/* Bouton hamburger (mobile) */
+#header .hamburger { height: 52px; width: 52px; border: 2px solid var(--primary); border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; z-index: 100; cursor: pointer; transform: scale(0.85); background: #fff; }
+#header .hamburger .bar { height: 2px; width: 24px; background-color: var(--primary); z-index: -1; position: relative; }
+#header .hamburger .bar::after, #header .hamburger .bar::before { content: ''; position: absolute; height: 100%; width: 100%; left: 0; background-color: var(--primary); transition: 0.3s ease; transition-property: top, bottom; }
+#header .hamburger .bar::after { top: 7px; }
+#header .hamburger .bar::before { bottom: 7px; }
+#header .hamburger.active .bar::before { bottom: 0; }
+#header .hamburger.active .bar::after { top: 0; }
+
+/* ── 4. SÉLECTEUR DE LANGUE FR/EN ── */
+.lang-switch { display: flex; background: rgba(255,255,255,0.85); border: 1px solid #dbeafe; border-radius: 50px; padding: 4px; gap: 2px; z-index: 200; }
+.lang-switch button { border: none; background: transparent; font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--muted); cursor: pointer; padding: 6px 14px; border-radius: 50px; transition: 0.25s ease; }
+.lang-switch button.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; box-shadow: 0 3px 10px var(--primary-glow); }
+
+/* ── 5. SECTION HERO (image de fond plein écran, comme le site de Samy) ──
+   L'image vient de img/hero-bg.jpg.
+   Le voile sombre (::after) assure la lisibilité du texte blanc. */
+#hero {
+  background-image: url(../img/hero-bg.jpg);
+  background-size: cover;              /* l'image couvre tout l'écran   */
+  background-position: center;         /* centrée                        */
+  background-attachment: fixed;        /* effet parallaxe au scroll      */
+  position: relative; z-index: 1;
+}
+#hero::after {
+  content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 100%;
+  background-color: black; opacity: 0.45;  /* ← augmenter = plus sombre */
+  z-index: -1;
+}
+#hero .hero { max-width: 1200px; margin: 0 auto; padding: 0 50px; justify-content: flex-start; }
+#hero .badge-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.92); border: 1px solid #e2e8f0; padding: 8px 18px; border-radius: 50px;
+  font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 26px;
+}
+#hero .badge-status .dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e; animation: pulse_dot 1.6s ease infinite; }
+/* Titres animés : texte invisible au départ, révélé par l'animation */
+#hero h1 { font-family: 'Poppins', sans-serif; display: block; width: fit-content; font-size: 4rem; position: relative; color: transparent; animation: text_reveal 0.5s ease forwards; }
+#hero h1:nth-of-type(1) { animation-delay: 1s; }
+#hero h1:nth-of-type(2) { animation-delay: 2s; }
+#hero h1:nth-of-type(3) { animation: text_reveal_name 0.5s ease forwards; animation-delay: 3s; } /* le prénom en bleu */
+/* La "boîte" bleue qui balaie le texte pendant la révélation */
+#hero h1 span.box { position: absolute; top: 0; left: 0; height: 100%; width: 0; background-color: var(--primary); animation: text_reveal_box 1s ease; border-radius: 4px; }
+#hero h1:nth-of-type(1) span.box { animation-delay: 0.5s; }
+#hero h1:nth-of-type(2) span.box { animation-delay: 1.5s; }
+#hero h1:nth-of-type(3) span.box { animation-delay: 2.5s; }
+#hero .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+#hero .cta.ghost { background: transparent; color: #fff; border-color: #fff; }
+#hero .cta.ghost:hover { background: rgba(255,255,255,0.15); }
+
+/* ── 6. CARTES (intérêts + compétences) ── */
+.cards-section { background-color: #ffffff; }
+.cards-section.alt { background-color: var(--bg-soft); }
+.cards-wrap { flex-direction: column; max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+.cards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 55px; width: 100%; }
+.card-item {
+  flex: 1 1 220px; max-width: 300px; padding: 32px 26px;
+  background: var(--card); border-radius: 20px; border: 1px solid #eef2f7;
+  text-align: center; transition: 0.3s ease; cursor: default;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.05); position: relative; overflow: hidden;
+}
+/* Barre colorée qui apparaît en haut de la carte au survol */
+.card-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: 0; transition: 0.3s; }
+.card-item:hover { transform: translateY(-8px); box-shadow: 0 16px 38px rgba(14,165,233,0.18); border-color: #bae6fd; }
+.card-item:hover::before { opacity: 1; }
+.card-icon { font-size: 4rem; margin-bottom: 14px; display: block; }
+.card-item h2 { font-family: 'Poppins', sans-serif; font-size: 1.7rem; color: var(--text); font-weight: 600; margin-bottom: 10px; }
+.card-item p { font-size: 1.25rem; line-height: 2.1rem; margin: 0; text-align: left; }
+
+/* ── 7. PROJETS ── */
+#projects { background-color: var(--bg-soft); }
+#projects .projects { flex-direction: column; max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+#projects .all-projects { width: 100%; display: flex; flex-direction: column; gap: 24px; margin-top: 55px; }
+#projects .project-item { display: flex; border-radius: 20px; overflow: hidden; background: #ffffff; transition: 0.3s ease; box-shadow: 0 4px 18px rgba(15,23,42,0.06); }
+#projects .project-item:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(14,165,233,0.16); }
+/* La barre verticale colorée à gauche de chaque projet */
+#projects .project-accent { width: 7px; background: linear-gradient(180deg, var(--primary), var(--accent)); flex-shrink: 0; }
+#projects .project-info { flex: 1; padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; }
+#projects .project-tag { font-size: 1.1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2rem; font-weight: 700; margin-bottom: 10px; }
+#projects .project-info h1 { font-family: 'Poppins', sans-serif; font-size: 2.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+#projects .project-info h2 { font-size: 1.45rem; color: var(--primary-dark); font-weight: 600; margin-bottom: 12px; }
+#projects .project-info p { font-size: 1.3rem; line-height: 2.2rem; margin: 0; }
+#projects .project-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+#projects .badge { font-size: 1.1rem; padding: 5px 14px; border-radius: 20px; background: var(--bg-soft); color: var(--primary-dark); font-weight: 600; border: 1px solid #dbeafe; transition: 0.25s; }
+#projects .project-item:hover .badge { border-color: var(--primary); }
+#projects .project-link { margin-top: 16px; font-size: 1.3rem; font-weight: 700; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.25s; }
+#projects .project-link:hover { gap: 12px; }
+
+/* ── 8. À PROPOS ── */
+#about { background-color: #ffffff; }
+#about .about { flex-direction: column-reverse; max-width: 1100px; margin: 0 auto; padding: 100px 20px; gap: 60px; }
+#about .col-left { display: flex; justify-content: center; }
+#about .about-img-wrap { width: 260px; height: 330px; position: relative; }
+#about .about-img { width: 100%; height: 100%; border-radius: 24px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 18px 44px rgba(2,132,199,0.16); }
+/* Cadre décoratif en pointillés derrière la photo */
+#about .about-img-wrap::after { content: ''; position: absolute; left: -16px; top: 16px; width: 100%; height: 100%; border: 3px dashed var(--primary); border-radius: 24px; z-index: -1; opacity: 0.5; }
+#about .col-right { text-align: center; max-width: 620px; }
+#about .col-right h2 { font-size: 1.7rem; color: var(--primary-dark); font-weight: 600; letter-spacing: 0.08rem; margin-bottom: 12px; }
+#about .col-right p { margin-bottom: 16px; }
+/* Cartes de formation (La Cité, Université) */
+#about .edu-card { background: linear-gradient(135deg, var(--bg-soft), #fff); border: 1px solid #dbeafe; border-radius: 16px; padding: 20px 26px; margin: 10px 0 8px; text-align: left; display: flex; gap: 16px; align-items: center; box-shadow: 0 4px 14px rgba(15,23,42,0.05); transition: 0.3s ease; }
+#about .edu-card:hover { transform: translateX(6px); border-color: var(--primary); }
+#about .edu-card .edu-icon { font-size: 3rem; }
+#about .edu-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.55rem; color: var(--text); font-weight: 600; }
+#about .edu-card p { font-size: 1.25rem; margin: 2px 0 0; line-height: 1.9rem; }
+#about .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 6px; }
+#about .tech-badges span { font-size: 1.15rem; padding: 6px 15px; border-radius: 20px; background: var(--bg-soft); color: var(--primary-dark); font-weight: 600; border: 1px solid #dbeafe; }
+
+/* ── 9. CONTACT ── */
+#contact { background: linear-gradient(160deg, var(--bg-soft), #e0f2fe); }
+#contact .contact { flex-direction: column; max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+#contact .contact-items { width: 100%; margin-top: 55px; display: flex; flex-direction: column; gap: 22px; }
+#contact .contact-item { display: flex; align-items: center; gap: 20px; padding: 28px 32px; background: #ffffff; border-radius: 20px; transition: 0.3s ease; box-shadow: 0 4px 16px rgba(15,23,42,0.06); }
+#contact .contact-item:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(14,165,233,0.18); }
+#contact .contact-icon { font-size: 2.6rem; width: 58px; height: 58px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--bg-soft); border-radius: 16px; }
+#contact .contact-info h1 { font-family: 'Poppins', sans-serif; font-size: 1.55rem; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+#contact .contact-info a, #contact .contact-info p { font-size: 1.3rem; color: var(--muted); margin: 0; line-height: 2rem; transition: color 0.2s; word-break: break-all; }
+#contact .contact-info a:hover { color: var(--primary); }
+
+/* ── 10. PIED DE PAGE ── */
+#footer { background: #0f2540; }
+#footer .footer { min-height: 200px; flex-direction: column; padding: 50px 20px 22px; }
+#footer .brand h1 { color: #fff; }
+#footer h2 { color: #94a3b8; font-weight: 400; font-size: 1.4rem; letter-spacing: 0.08rem; margin-top: 10px; margin-bottom: 24px; text-align: center; }
+#footer .social-icons { display: flex; gap: 16px; margin-bottom: 28px; }
+#footer .social-icons a { width: 46px; height: 46px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: #cbd5e1; transition: 0.3s ease; font-family: 'Poppins', sans-serif; font-weight: 700; }
+#footer .social-icons a:hover { background: var(--primary); color: #fff; transform: translateY(-4px); }
+#footer p { color: #64748b; font-size: 1.2rem; }
+
+/* ── 11. BOUTON RETOUR EN HAUT ── */
+#backTop { position: fixed; right: 24px; bottom: 24px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; border: none; border-radius: 50%; font-size: 2rem; cursor: pointer; z-index: 900; box-shadow: 0 8px 22px var(--primary-glow); opacity: 0; pointer-events: none; transition: 0.35s ease; display: flex; align-items: center; justify-content: center; }
+#backTop.show { opacity: 1; pointer-events: auto; }
+#backTop:hover { transform: translateY(-4px); }
+
+/* ── 12. ANIMATIONS ── */
+@keyframes pulse_dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }          /* point vert clignotant   */
+@keyframes text_reveal_box { 50% { width: 100%; left: 0; } 100% { width: 0; left: 100%; } } /* boîte qui balaie */
+@keyframes text_reveal { 100% { color: #ffffff; } }                                /* texte devient blanc     */
+@keyframes text_reveal_name { 100% { color: var(--primary); font-weight: 800; } } /* prénom devient bleu     */
+
+/* ── 13. RESPONSIVE ── */
+/* Tablette (écrans ≥ 768px) */
+@media (min-width: 768px) {
+  .section-title { font-size: 4.6rem; }
+  #hero h1 { font-size: 6.5rem; }
+  #about .about { flex-direction: row; align-items: center; }
+  #about .col-right { text-align: left; }
+  #about .tech-badges { justify-content: flex-start; }
+  #contact .contact-items { flex-direction: row; flex-wrap: wrap; }
+  #contact .contact-item { flex: 1 1 300px; }
+}
+/* Bureau (écrans ≥ 1200px) : menu horizontal, hamburger caché */
+@media (min-width: 1200px) {
+  #header .hamburger { display: none; }
+  #header .nav-list ul { position: initial; display: block; height: auto; width: fit-content; background-color: transparent; }
+  #header .nav-list ul li { display: inline-block; }
+  #header .nav-list ul li a { font-size: 1.5rem; padding: 10px 14px; font-weight: 600; }
+}
