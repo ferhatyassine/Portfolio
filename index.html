@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <!-- ═══════════════════════════════════════════════════════════
+  <head>
+    <!-- ═══════════════════════════════════════════════════════════
        PORTFOLIO — Ferhat Mohamed Yassine
        Structure du projet :
          index.html      → structure de la page (ce fichier)
@@ -10,279 +10,496 @@
          img/            → images (hero-bg.jpg, profile.jpg)
          CV_Ferhat_Mohamed_Yassine.pdf → CV téléchargeable
        ═══════════════════════════════════════════════════════════ -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ferhat Mohamed Yassine — Étudiant en programmation informatique à Ottawa.">
-  <title>Ferhat Mohamed Yassine — Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ferhat Mohamed Yassine — Étudiant en programmation informatique à Ottawa."
+    />
+    <title>Ferhat Mohamed Yassine — Portfolio</title>
 
-  <!-- Polices Google : Montserrat (texte) et Poppins (titres) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Polices Google : Montserrat (texte) et Poppins (titres) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Feuille de style principale -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<!-- ═══════════════ EN-TÊTE / BARRE DE NAVIGATION ═══════════════
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ═══════════════ EN-TÊTE / BARRE DE NAVIGATION ═══════════════
      Fixée en haut de l'écran. Contient : logo, sélecteur FR/EN,
      menu hamburger (mobile) et liens de navigation. -->
-<section id="header">
-  <div class="header container">
-    <div class="nav-bar">
-      <!-- Logo / nom (cliquable, ramène en haut) -->
-      <div class="brand"><a href="#hero"><h1><span>F</span>erhat <span>Y</span>assine</h1></a></div>
-      <div class="nav-right">
-        <!-- Boutons de changement de langue (géré dans js/app.js) -->
-        <div class="lang-switch">
-          <button id="btnFr" class="active" onclick="setLang('fr')">FR</button>
-          <button id="btnEn" onclick="setLang('en')">EN</button>
-        </div>
-        <!-- Menu de navigation. data-i18n = clé de traduction (voir js/app.js) -->
-        <div class="nav-list">
-          <div class="hamburger"><div class="bar"></div></div>
-          <ul>
-            <li><a href="#hero" data-i18n="nav_home">Accueil</a></li>
-            <li><a href="#interests" data-i18n="nav_interests">Intérêts</a></li>
-            <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
-            <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
-            <li><a href="#about" data-i18n="nav_about">À propos</a></li>
-            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-          </ul>
+    <section id="header">
+      <div class="header container">
+        <div class="nav-bar">
+          <!-- Logo / nom (cliquable, ramène en haut) -->
+          <div class="brand">
+            <a href="#hero"
+              ><h1><span>F</span>erhat <span>Y</span>assine</h1></a
+            >
+          </div>
+          <div class="nav-right">
+            <!-- Boutons de changement de langue (géré dans js/app.js) -->
+            <div class="lang-switch">
+              <button id="btnFr" class="active" onclick="setLang('fr')">
+                FR
+              </button>
+              <button id="btnEn" onclick="setLang('en')">EN</button>
+            </div>
+            <!-- Menu de navigation. data-i18n = clé de traduction (voir js/app.js) -->
+            <div class="nav-list">
+              <div class="hamburger"><div class="bar"></div></div>
+              <ul>
+                <li><a href="#hero" data-i18n="nav_home">Accueil</a></li>
+                <li>
+                  <a href="#interests" data-i18n="nav_interests">Intérêts</a>
+                </li>
+                <li>
+                  <a href="#skills" data-i18n="nav_skills">Compétences</a>
+                </li>
+                <li>
+                  <a href="#projects" data-i18n="nav_projects">Projets</a>
+                </li>
+                <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ SECTION HERO (accueil plein écran) ═══════════════
+    <!-- ═══════════════ SECTION HERO (accueil plein écran) ═══════════════
      Image de fond : img/hero-bg.jpg (définie dans css/style.css → #hero)
      Le texte apparaît avec une animation de révélation (keyframes CSS).
      Pour changer l'image de fond : remplacer img/hero-bg.jpg -->
-<section id="hero">
-  <div class="hero container">
-    <div class="hero-text">
-      <!-- Badge de statut avec point vert animé -->
-      <span class="badge-status"><span class="dot"></span> <span data-i18n="badge">Étudiant à La Cité collégiale · Ottawa</span></span>
-      <!-- Titres animés : chaque <h1> apparaît l'un après l'autre -->
-      <h1><span data-i18n="hello">Bonjour,</span> <span class="box"></span></h1>
-      <h1><span data-i18n="myname">Je m'appelle</span> <span class="box"></span></h1>
-      <h1>Yassine <span class="box"></span></h1>
-      <!-- Boutons d'action -->
-      <div class="hero-cta-row">
-        <a href="#projects" class="cta" data-i18n="cta_projects">Portfolio</a>
-        <a href="CV_Ferhat_Mohamed_Yassine.pdf" download class="cta ghost" data-i18n="cta_cv2">CV 📄</a>
+    <section id="hero">
+      <div class="hero container">
+        <div class="hero-text">
+          <!-- Badge de statut avec point vert animé -->
+          <span class="badge-status"
+            ><span class="dot"></span>
+            <span data-i18n="badge"
+              >Étudiant à La Cité collégiale · Ottawa</span
+            ></span
+          >
+          <!-- Titres animés : chaque <h1> apparaît l'un après l'autre -->
+          <h1>
+            <span data-i18n="hello">Bonjour,</span> <span class="box"></span>
+          </h1>
+          <h1>
+            <span data-i18n="myname">Je m'appelle</span>
+            <span class="box"></span>
+          </h1>
+          <h1>Yassine <span class="box"></span></h1>
+          <!-- Boutons d'action -->
+          <div class="hero-cta-row">
+            <a href="#projects" class="cta" data-i18n="cta_projects"
+              >Portfolio</a
+            >
+            <a
+              href="CV_Ferhat_Mohamed_Yassine.pdf"
+              download
+              class="cta ghost"
+              data-i18n="cta_cv2"
+              >CV 📄</a
+            >
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ SECTION INTÉRÊTS ═══════════════
+    <!-- ═══════════════ SECTION INTÉRÊTS ═══════════════
      4 cartes de centres d'intérêt. Pour modifier une carte :
      changer l'émoji (card-icon), le titre (h2) et le texte (p).
      ⚠ Modifier AUSSI la traduction correspondante dans js/app.js -->
-<section id="interests" class="cards-section">
-  <div class="cards-wrap container">
-    <div class="reveal">
-      <h1 class="section-title"><span data-i18n="int_t">Intérêts</span></h1>
-      <p class="section-sub" data-i18n="int_sub">Je consacre beaucoup de temps à mes études et à l'informatique, mais je crois aussi à l'équilibre entre travail et vie personnelle. Voici ce qui me passionne.</p>
-    </div>
-    <div class="cards-grid">
-      <div class="card-item reveal d1">
-        <span class="card-icon">💻</span>
-        <h2 data-i18n="int1_t">Programmation</h2>
-        <p data-i18n="int1_p">Depuis mes premières lignes de code à l'université, la programmation est devenue bien plus qu'un métier : c'est un plaisir quotidien. Résoudre un problème difficile après des heures d'essais reste l'une de mes plus grandes satisfactions.</p>
+    <section id="interests" class="cards-section">
+      <div class="cards-wrap container">
+        <div class="reveal">
+          <h1 class="section-title"><span data-i18n="int_t">Intérêts</span></h1>
+          <p class="section-sub" data-i18n="int_sub">
+            Je consacre beaucoup de temps à mes études et à l'informatique, mais
+            je crois aussi à l'équilibre entre travail et vie personnelle. Voici
+            ce qui me passionne.
+          </p>
+        </div>
+        <div class="cards-grid">
+          <div class="card-item reveal d1">
+            <span class="card-icon">💻</span>
+            <h2 data-i18n="int1_t">Programmation</h2>
+            <p data-i18n="int1_p">
+              Depuis mes premières lignes de code à l'université, la
+              programmation est devenue bien plus qu'un métier : c'est un
+              plaisir quotidien. Résoudre un problème difficile après des heures
+              d'essais reste l'une de mes plus grandes satisfactions.
+            </p>
+          </div>
+          <div class="card-item reveal d2">
+            <span class="card-icon">⚽</span>
+            <h2 data-i18n="int2_t">Football</h2>
+            <p data-i18n="int2_p">
+              Je joue au football depuis mon plus jeune âge. C'est pour moi la
+              meilleure façon de rester actif tout en cultivant l'esprit
+              d'équipe et les amitiés. Quand je ne joue pas, je suis les grands
+              matchs à la télévision.
+            </p>
+          </div>
+          <div class="card-item reveal d3">
+            <span class="card-icon">✈️</span>
+            <h2 data-i18n="int3_t">Découvertes</h2>
+            <p data-i18n="int3_p">
+              Quitter l'Algérie pour m'installer au Canada a été une grande
+              aventure. J'aime découvrir de nouvelles cultures, de nouveaux
+              endroits et rencontrer des gens de tous horizons — Ottawa est
+              parfaite pour ça.
+            </p>
+          </div>
+          <div class="card-item reveal d4">
+            <span class="card-icon">🖼️</span>
+            <h2 data-i18n="int4_t">Image &amp; Photo</h2>
+            <p data-i18n="int4_p">
+              Ma passion pour le traitement d'image dépasse le cadre académique
+              : je m'intéresse à la photographie numérique, à la vision par
+              ordinateur et à la manière dont les algorithmes « voient » le
+              monde.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="card-item reveal d2">
-        <span class="card-icon">⚽</span>
-        <h2 data-i18n="int2_t">Football</h2>
-        <p data-i18n="int2_p">Je joue au football depuis mon plus jeune âge. C'est pour moi la meilleure façon de rester actif tout en cultivant l'esprit d'équipe et les amitiés. Quand je ne joue pas, je suis les grands matchs à la télévision.</p>
-      </div>
-      <div class="card-item reveal d3">
-        <span class="card-icon">✈️</span>
-        <h2 data-i18n="int3_t">Découvertes</h2>
-        <p data-i18n="int3_p">Quitter l'Algérie pour m'installer au Canada a été une grande aventure. J'aime découvrir de nouvelles cultures, de nouveaux endroits et rencontrer des gens de tous horizons — Ottawa est parfaite pour ça.</p>
-      </div>
-      <div class="card-item reveal d4">
-        <span class="card-icon">🖼️</span>
-        <h2 data-i18n="int4_t">Image &amp; Photo</h2>
-        <p data-i18n="int4_p">Ma passion pour le traitement d'image dépasse le cadre académique : je m'intéresse à la photographie numérique, à la vision par ordinateur et à la manière dont les algorithmes « voient » le monde.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ SECTION COMPÉTENCES ═══════════════
+    <!-- ═══════════════ SECTION COMPÉTENCES ═══════════════
      6 cartes de compétences alignées sur le cursus scolaire. -->
-<section id="skills" class="cards-section alt">
-  <div class="cards-wrap container">
-    <div class="reveal">
-      <h1 class="section-title"><span data-i18n="skills_t1">Mes</span> <span data-i18n="skills_t2">Compétences</span></h1>
-      <p class="section-sub" data-i18n="skills_sub">Un profil en construction, aligné sur ma formation : développement logiciel, bases de données et technologies web.</p>
-    </div>
-    <div class="cards-grid">
-      <div class="card-item reveal d1">
-        <span class="card-icon">⚙️</span>
-        <h2>C++ <span data-i18n="sk1_t">Moderne</span></h2>
-        <p data-i18n="sk1_p">C++17/20, RAII, smart pointers, STL, CMake et programmation orientée objet.</p>
+    <section id="skills" class="cards-section alt">
+      <div class="cards-wrap container">
+        <div class="reveal">
+          <h1 class="section-title">
+            <span data-i18n="skills_t1">Mes</span>
+            <span data-i18n="skills_t2">Compétences</span>
+          </h1>
+          <p class="section-sub" data-i18n="skills_sub">
+            Un profil en construction, aligné sur ma formation : développement
+            logiciel, bases de données et technologies web.
+          </p>
+        </div>
+        <div class="cards-grid">
+          <div class="card-item reveal d1">
+            <span class="card-icon">⚙️</span>
+            <h2>C++ <span data-i18n="sk1_t">Moderne</span></h2>
+            <p data-i18n="sk1_p">
+              C++17/20, RAII, smart pointers, STL, CMake et programmation
+              orientée objet.
+            </p>
+          </div>
+          <div class="card-item reveal d2">
+            <span class="card-icon">🐍</span>
+            <h2>Python</h2>
+            <p data-i18n="sk2_p">
+              Scripting, résolution de problèmes et développement d'outils.
+            </p>
+          </div>
+          <div class="card-item reveal d3">
+            <span class="card-icon">🖥️</span>
+            <h2>Qt Framework</h2>
+            <p data-i18n="sk3_p">
+              Interfaces graphiques avec Qt Creator et Qt Designer.
+            </p>
+          </div>
+          <div class="card-item reveal d1">
+            <span class="card-icon">🖼️</span>
+            <h2 data-i18n="sk4_t">Traitement d'Image</h2>
+            <p data-i18n="sk4_p">
+              PSNR, critères de Linfoot, saillance visuelle Itti-Koch, filtres
+              de Gabor.
+            </p>
+          </div>
+          <div class="card-item reveal d2">
+            <span class="card-icon">🗄️</span>
+            <h2 data-i18n="sk5_t">Bases de Données</h2>
+            <p data-i18n="sk5_p">
+              MySQL, modélisation relationnelle et requêtes SQL — formation en
+              cours.
+            </p>
+          </div>
+          <div class="card-item reveal d3">
+            <span class="card-icon">🛠️</span>
+            <h2 data-i18n="sk6_t">Outils</h2>
+            <p data-i18n="sk6_p">
+              Git, GitHub, Linux, GCC/Clang, CMake, VS Code.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="card-item reveal d2">
-        <span class="card-icon">🐍</span>
-        <h2>Python</h2>
-        <p data-i18n="sk2_p">Scripting, résolution de problèmes et développement d'outils.</p>
-      </div>
-      <div class="card-item reveal d3">
-        <span class="card-icon">🖥️</span>
-        <h2>Qt Framework</h2>
-        <p data-i18n="sk3_p">Interfaces graphiques avec Qt Creator et Qt Designer.</p>
-      </div>
-      <div class="card-item reveal d1">
-        <span class="card-icon">🖼️</span>
-        <h2 data-i18n="sk4_t">Traitement d'Image</h2>
-        <p data-i18n="sk4_p">PSNR, critères de Linfoot, saillance visuelle Itti-Koch, filtres de Gabor.</p>
-      </div>
-      <div class="card-item reveal d2">
-        <span class="card-icon">🗄️</span>
-        <h2 data-i18n="sk5_t">Bases de Données</h2>
-        <p data-i18n="sk5_p">MySQL, modélisation relationnelle et requêtes SQL — formation en cours.</p>
-      </div>
-      <div class="card-item reveal d3">
-        <span class="card-icon">🛠️</span>
-        <h2 data-i18n="sk6_t">Outils</h2>
-        <p data-i18n="sk6_p">Git, GitHub, Linux, GCC/Clang, CMake, VS Code.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ SECTION PROJETS ═══════════════
+    <!-- ═══════════════ SECTION PROJETS ═══════════════
      Pour ajouter un projet : copier un bloc <div class="project-item reveal">
      entier et modifier son contenu + ajouter les traductions dans js/app.js -->
-<section id="projects">
-  <div class="projects container">
-    <div class="reveal">
-      <h1 class="section-title"><span data-i18n="proj_t1">Projets</span> <span data-i18n="proj_t2">Récents</span></h1>
-      <p class="section-sub" data-i18n="proj_sub">Des projets concrets alliant théorie et pratique.</p>
-    </div>
-    <div class="all-projects">
-
-      <!-- ── Projet 1 : Modélisation du bruit ── -->
-      <div class="project-item reveal">
-        <div class="project-accent"></div>
-        <div class="project-info">
-          <span class="project-tag" data-i18n="p1_tag">Projet de Recherche · Traitement d'Image</span>
-          <h1 data-i18n="p1_t">Modélisation du Bruit Perceptible</h1>
-          <h2>C++20 · Qt · CMake</h2>
-          <p data-i18n="p1_p">Implémentation de deux approches pour mesurer le bruit dans les images numériques : métriques mathématiques (PSNR, MSE, critères de Linfoot) et modèle perceptuel du Système Visuel Humain (carte de saillance d'Itti-Koch, pyramides gaussiennes, filtres de Gabor, 42 cartes de propriétés). Projet complet avec documentation détaillée.</p>
-          <!-- Badges de technologies -->
-          <div class="project-badges">
-            <span class="badge">C++20</span><span class="badge">Qt</span><span class="badge">CMake</span><span class="badge">PSNR</span><span class="badge">Itti-Koch</span>
+    <section id="projects">
+      <div class="projects container">
+        <div class="reveal">
+          <h1 class="section-title">
+            <span data-i18n="proj_t1">Projets</span>
+            <span data-i18n="proj_t2">Récents</span>
+          </h1>
+          <p class="section-sub" data-i18n="proj_sub">
+            Des projets concrets alliant théorie et pratique.
+          </p>
+        </div>
+        <div class="all-projects">
+          <!-- ── Projet 1 : Modélisation du bruit ── -->
+          <div class="project-item reveal">
+            <div class="project-accent"></div>
+            <div class="project-info">
+              <span class="project-tag" data-i18n="p1_tag"
+                >Projet de Recherche · Traitement d'Image</span
+              >
+              <h1 data-i18n="p1_t">Modélisation du Bruit Perceptible</h1>
+              <h2>C++20 · Qt · CMake</h2>
+              <p data-i18n="p1_p">
+                Implémentation de deux approches pour mesurer le bruit dans les
+                images numériques : métriques mathématiques (PSNR, MSE, critères
+                de Linfoot) et modèle perceptuel du Système Visuel Humain (carte
+                de saillance d'Itti-Koch, pyramides gaussiennes, filtres de
+                Gabor, 42 cartes de propriétés). Projet complet avec
+                documentation détaillée.
+              </p>
+              <!-- Badges de technologies -->
+              <div class="project-badges">
+                <span class="badge">C++20</span><span class="badge">Qt</span
+                ><span class="badge">CMake</span><span class="badge">PSNR</span
+                ><span class="badge">Itti-Koch</span>
+              </div>
+              <a
+                class="project-link"
+                href="https://github.com/ferhatyassine/perceptual-noise-modeling"
+                target="_blank"
+                rel="noopener"
+                ><span data-i18n="p_link">Voir le projet</span> →</a
+              >
+            </div>
           </div>
-          <a class="project-link" href="https://github.com/ferhatyassine/perceptual-noise-modeling" target="_blank" rel="noopener"><span data-i18n="p_link">Voir le projet</span> →</a>
+
+          <!-- ── Projet 2 : MediBook ── -->
+          <div class="project-item reveal">
+            <div class="project-accent"></div>
+            <div class="project-info">
+              <span class="project-tag" data-i18n="p3_tag"
+                >Développement Web · Jakarta EE</span
+              >
+              <h1 data-i18n="p3_t">MediBook</h1>
+              <h2 data-i18n="p3_st">
+                Gestion de Rendez-vous Médicaux
+              </h2>
+              <p data-i18n="p3_p">
+                Application web Jakarta EE 10 permettant de gérer les rendez-vous
+                d'une clinique : réservation de créneaux par les patients,
+                gestion des disponibilités et comptes rendus par les médecins,
+                et administration des spécialités et statistiques.
+              </p>
+              <div class="project-badges">
+                <span class="badge">Jakarta EE 10</span
+                ><span class="badge">Java</span
+                ><span class="badge">JSF / PrimeFaces</span
+                ><span class="badge">JPA / EJB</span
+                ><span class="badge">Payara</span>
+              </div>
+              <a
+                class="project-link"
+                href="https://github.com/ferhatyassine/medibook"
+                target="_blank"
+                rel="noopener"
+                ><span data-i18n="p_link">Voir le projet</span> →</a
+              >
+            </div>
+          </div>
+
+          <!-- ── AJOUTER TES FUTURS PROJETS ICI (copier le bloc ci-dessus) ── -->
         </div>
       </div>
+    </section>
 
-      <!-- ── Projet 2 : Application Qt ── -->
-      <div class="project-item reveal">
-        <div class="project-accent"></div>
-        <div class="project-info">
-          <span class="project-tag" data-i18n="p3_tag">Développement Logiciel</span>
-          <h1 data-i18n="p3_t">Application Qt C++</h1>
-          <h2 data-i18n="p3_st">Interface Graphique de Traitement d'Image</h2>
-          <p data-i18n="p3_p">Interface graphique développée avec Qt permettant de charger des images PPM/PNM, d'appliquer les algorithmes PSNR et de saillance, et de visualiser les résultats en temps réel.</p>
-          <div class="project-badges">
-            <span class="badge">Qt Widgets</span><span class="badge">C++</span><span class="badge">Qt Designer</span><span class="badge">MinGW</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── AJOUTER TES FUTURS PROJETS ICI (copier le bloc ci-dessus) ── -->
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION À PROPOS ═══════════════
+    <!-- ═══════════════ SECTION À PROPOS ═══════════════
      Photo de profil : img/profile.jpg -->
-<section id="about">
-  <div class="about container">
-    <div class="col-left reveal">
-      <div class="about-img-wrap"><div class="about-img"><img src="img/profile.jpg" alt="Ferhat Mohamed Yassine"></div></div>
-    </div>
-    <div class="col-right reveal d1">
-      <h1 class="section-title" style="text-align:inherit;"><span data-i18n="about_t1">À propos</span> <span data-i18n="about_t2">de moi</span></h1>
-      <h2 data-i18n="about_st">Étudiant en Informatique @ La Cité collégiale</h2>
-      <p data-i18n="about_p1">Je suis étudiant en informatique à La Cité collégiale, à Ottawa. Après une formation universitaire en informatique en Algérie, j'ai choisi de poursuivre mon parcours au Canada pour me rapprocher de l'un des écosystèmes technologiques les plus dynamiques du pays.</p>
-      <p data-i18n="about_p2">C'est en travaillant sur mes premiers projets de traitement d'image que j'ai découvert ma passion pour le développement logiciel. Depuis, je n'ai jamais cessé d'apprendre : C++, Python, bases de données, web — chaque cours et chaque projet est une occasion de progresser.</p>
-      <!-- Cartes de formation -->
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div><h3>La Cité collégiale — Ottawa</h3><p data-i18n="edu1">Études collégiales en cours · Informatique</p></div>
+    <section id="about">
+      <div class="about container">
+        <div class="col-left reveal">
+          <div class="about-img-wrap">
+            <div class="about-img">
+              <img src="img/profile.jpg" alt="Ferhat Mohamed Yassine" />
+            </div>
+          </div>
+        </div>
+        <div class="col-right reveal d1">
+          <h1 class="section-title" style="text-align: inherit">
+            <span data-i18n="about_t1">À propos</span>
+            <span data-i18n="about_t2">de moi</span>
+          </h1>
+          <h2 data-i18n="about_st">
+            Étudiant en Informatique @ La Cité collégiale
+          </h2>
+          <p data-i18n="about_p1">
+            Je suis étudiant en informatique à La Cité collégiale, à Ottawa.
+            Après une formation universitaire en informatique en Algérie, j'ai
+            choisi de poursuivre mon parcours au Canada pour me rapprocher de
+            l'un des écosystèmes technologiques les plus dynamiques du pays.
+          </p>
+          <p data-i18n="about_p2">
+            C'est en travaillant sur mes premiers projets de traitement d'image
+            que j'ai découvert ma passion pour le développement logiciel.
+            Depuis, je n'ai jamais cessé d'apprendre : C++, Python, bases de
+            données, web — chaque cours et chaque projet est une occasion de
+            progresser.
+          </p>
+          <!-- Cartes de formation -->
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <h3>La Cité collégiale — Ottawa</h3>
+              <p data-i18n="edu1">Études collégiales en cours · Informatique</p>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <h3 data-i18n="edu2_t">Université Abbes Laghrour Khenchela</h3>
+              <p data-i18n="edu2">
+                Formation universitaire en informatique · Algérie
+              </p>
+            </div>
+          </div>
+          <!-- Badges technos -->
+          <div class="tech-badges">
+            <span>C++</span><span>Python</span><span>Qt</span><span>Git</span
+            ><span>Linux</span><span>CMake</span><span>SQL</span>
+          </div>
+          <!-- Boutons CV + GitHub -->
+          <div
+            style="
+              display: flex;
+              gap: 14px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <a
+              href="CV_Ferhat_Mohamed_Yassine.pdf"
+              download
+              class="cta"
+              data-i18n="cta_cv"
+              >Télécharger mon CV</a
+            >
+            <a
+              href="https://github.com/ferhatyassine"
+              target="_blank"
+              rel="noopener"
+              class="cta ghost"
+              data-i18n="cta_github"
+              >Mon GitHub</a
+            >
+          </div>
+        </div>
       </div>
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div><h3 data-i18n="edu2_t">Université Abbes Laghrour Khenchela</h3><p data-i18n="edu2">Formation universitaire en informatique · Algérie</p></div>
-      </div>
-      <!-- Badges technos -->
-      <div class="tech-badges">
-        <span>C++</span><span>Python</span><span>Qt</span><span>Git</span><span>Linux</span><span>CMake</span><span>SQL</span>
-      </div>
-      <!-- Boutons CV + GitHub -->
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-        <a href="CV_Ferhat_Mohamed_Yassine.pdf" download class="cta" data-i18n="cta_cv">Télécharger mon CV</a>
-        <a href="https://github.com/ferhatyassine" target="_blank" rel="noopener" class="cta ghost" data-i18n="cta_github">Mon GitHub</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ SECTION CONTACT ═══════════════ -->
-<section id="contact">
-  <div class="contact container">
-    <div class="reveal">
-      <h1 class="section-title"><span data-i18n="contact_t1">Me</span> <span data-i18n="contact_t2">Contacter</span></h1>
-      <p class="section-sub" data-i18n="contact_sub">N'hésitez pas à me joindre pour toute opportunité ou collaboration.</p>
-    </div>
-    <div class="contact-items">
-      <div class="contact-item reveal d1">
-        <div class="contact-icon">📞</div>
-        <div class="contact-info"><h1 data-i18n="c_phone">Téléphone</h1><a href="tel:+16137622274">+1 (613) 762-2274</a></div>
+    <!-- ═══════════════ SECTION CONTACT ═══════════════ -->
+    <section id="contact">
+      <div class="contact container">
+        <div class="reveal">
+          <h1 class="section-title">
+            <span data-i18n="contact_t1">Me</span>
+            <span data-i18n="contact_t2">Contacter</span>
+          </h1>
+          <p class="section-sub" data-i18n="contact_sub">
+            N'hésitez pas à me joindre pour toute opportunité ou collaboration.
+          </p>
+        </div>
+        <div class="contact-items">
+          <div class="contact-item reveal d1">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+              <h1 data-i18n="c_phone">Téléphone</h1>
+              <a href="tel:+16137622274">+1 (613) 762-2274</a>
+            </div>
+          </div>
+          <div class="contact-item reveal d2">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-info">
+              <h1>Email</h1>
+              <a href="mailto:ferhatmedyassine569@gmail.com"
+                >ferhatmedyassine569@gmail.com</a
+              >
+            </div>
+          </div>
+          <div class="contact-item reveal d3">
+            <div class="contact-icon">💼</div>
+            <div class="contact-info">
+              <h1>LinkedIn</h1>
+              <a
+                href="https://www.linkedin.com/in/ferhat-mohamed-yassine-214a5a2ab/"
+                target="_blank"
+                rel="noopener"
+                >ferhat-mohamed-yassine</a
+              >
+            </div>
+          </div>
+          <div class="contact-item reveal d4">
+            <div class="contact-icon">📍</div>
+            <div class="contact-info">
+              <h1 data-i18n="c_addr">Adresse</h1>
+              <p>Ottawa, Ontario, Canada</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact-item reveal d2">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-info"><h1>Email</h1><a href="mailto:ferhatmedyassine569@gmail.com">ferhatmedyassine569@gmail.com</a></div>
-      </div>
-      <div class="contact-item reveal d3">
-        <div class="contact-icon">💼</div>
-        <div class="contact-info"><h1>LinkedIn</h1><a href="https://www.linkedin.com/in/ferhat-mohamed-yassine-214a5a2ab/" target="_blank" rel="noopener">ferhat-mohamed-yassine</a></div>
-      </div>
-      <div class="contact-item reveal d4">
-        <div class="contact-icon">📍</div>
-        <div class="contact-info"><h1 data-i18n="c_addr">Adresse</h1><p>Ottawa, Ontario, Canada</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════ PIED DE PAGE ═══════════════ -->
-<section id="footer">
-  <div class="footer container">
-    <div class="brand"><h1><span>F</span>erhat <span>Y</span>assine</h1></div>
-    <h2 data-i18n="footer_sub">Étudiant en informatique à La Cité collégiale, Ottawa</h2>
-    <div class="social-icons">
-      <a href="https://github.com/ferhatyassine" target="_blank" rel="noopener" title="GitHub">GH</a>
-      <a href="https://www.linkedin.com/in/ferhat-mohamed-yassine-214a5a2ab/" target="_blank" rel="noopener" title="LinkedIn">in</a>
-      <a href="mailto:ferhatmedyassine569@gmail.com" title="Email">✉</a>
-      <a href="tel:+16137622274" title="Téléphone">📞</a>
-    </div>
-    <p data-i18n="footer_c">© 2026 Ferhat Mohamed Yassine. Tous droits réservés.</p>
-  </div>
-</section>
+    <!-- ═══════════════ PIED DE PAGE ═══════════════ -->
+    <section id="footer">
+      <div class="footer container">
+        <div class="brand">
+          <h1><span>F</span>erhat <span>Y</span>assine</h1>
+        </div>
+        <h2 data-i18n="footer_sub">
+          Étudiant en informatique à La Cité collégiale, Ottawa
+        </h2>
+        <div class="social-icons">
+          <a
+            href="https://github.com/ferhatyassine"
+            target="_blank"
+            rel="noopener"
+            title="GitHub"
+            >GH</a
+          >
+          <a
+            href="https://www.linkedin.com/in/ferhat-mohamed-yassine-214a5a2ab/"
+            target="_blank"
+            rel="noopener"
+            title="LinkedIn"
+            >in</a
+          >
+          <a href="mailto:ferhatmedyassine569@gmail.com" title="Email">✉</a>
+          <a href="tel:+16137622274" title="Téléphone">📞</a>
+        </div>
+        <p data-i18n="footer_c">
+          © 2026 Ferhat Mohamed Yassine. Tous droits réservés.
+        </p>
+      </div>
+    </section>
 
-<!-- Bouton flottant "retour en haut" (apparaît après 500px de scroll) -->
-<button id="backTop" title="Haut de page" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <!-- Bouton flottant "retour en haut" (apparaît après 500px de scroll) -->
+    <button
+      id="backTop"
+      title="Haut de page"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      ↑
+    </button>
 
-<!-- Script principal (menu, langues, animations) -->
-<script src="js/app.js"></script>
-</body>
+    <!-- Script principal (menu, langues, animations) -->
+    <script src="js/app.js"></script>
+  </body>
 </html>
