@@ -38,4 +38,4 @@ Double-cliquer sur `index.html` — le site s'ouvre dans le navigateur.
 1. Créer un repo GitHub nommé `Portfolio`
 2. Y pousser tout le contenu de ce dossier
 3. Settings → Pages → Branch `main` → dossier `/ (root)` → Save
-4. Le site sera en ligne sur : `https://ferhatyassine.github.io/Portfolio/`
+4. Le site sera en ligne sur : `https://yassine-website.github.io/Portfolio/`
